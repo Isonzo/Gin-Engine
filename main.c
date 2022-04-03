@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#define SCREENWIDTH 400
-#define SCREENHEIGHT 400
+#define SCREEN_WIDTH 400
+#define SCREEN_HEIGHT 400
 
 void printKeyboardEvent(void);
 void printMouseEvent(void);
@@ -11,7 +11,7 @@ int GetMouseButtonPressed(void);
 
 int main(void)
 {
-    InitWindow(SCREENWIDTH, SCREENHEIGHT, "Game Window");
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Game Window");
     SetTargetFPS(60);
 
     // Load Texture
@@ -25,7 +25,7 @@ int main(void)
         // Begin Drawing items on screen
         BeginDrawing();
 
-        DrawTexture(cutieAmongUs, SCREENWIDTH/2, SCREENHEIGHT/2, WHITE);
+        DrawTexture(cutieAmongUs, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, WHITE);
 
         EndDrawing();
     }
