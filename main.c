@@ -1,5 +1,6 @@
 #include "include/raylib.h"
 #include <stdio.h>
+#include <stdbool.h>
 
 #define SCREENWIDTH 400
 #define SCREENHEIGHT 400
@@ -35,8 +36,21 @@ int main(void)
 
 void printKeyboardEvent(void)
 {
-    int key = GetKeyPressed();
-    if (key) printf("Key pressed: %d\n", key);
+    bool first_key = true;
+    for (char i = '0'; i < '~'; ++i)
+        {
+            bool key = IsKeyPressed(i);
+            if (key)
+            {
+                if (first_key)
+                {
+                    first_key = false;
+                    printf("Pressed: ");
+                }
+                printf("%c ", i);
+            }
+        }
+    if (!first_key) printf("\n");
 }
 
 void printMouseEvent(void)
