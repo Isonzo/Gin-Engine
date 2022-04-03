@@ -1,10 +1,7 @@
 #include "include/raylib.h" //Capturing input
 #include <stdio.h> //printf functionality
 #include <stdbool.h> //bool data type
-
-void printKeyboardEvent(void);
-void printMouseEvent(void);
-int GetMouseButtonPressed(void);
+#include "include/inputDebugger.h"
 
 void printKeyboardEvent(void)
 {
