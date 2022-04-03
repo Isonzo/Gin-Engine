@@ -4,7 +4,9 @@
 int screenWidth = 400;
 int screenHeight = 400;
 
-int GetMouseButtonPressed();
+void printKeyboardEvent(void);
+void printMouseEvent(void);
+int GetMouseButtonPressed(void);
 
 int main(void)
 {
@@ -16,12 +18,9 @@ int main(void)
 
     while (!WindowShouldClose())
     {
-        // Print input
-        printf("Key pressed: %d\n", GetKeyPressed());
-        printf("Mouse button pressed: %d\n", GetMouseButtonPressed());
-        printf("Current Mouse Position: x: %.2f, y: %.2f\n", GetMousePosition().x, GetMousePosition().y);
-        printf("Mouse Wheel: %.2f\n", GetMouseWheelMove());
-        printf("========================================\n");
+        // Debug Input
+        printKeyboardEvent();
+        printMouseEvent();
         // Begin Drawing items on screen
         BeginDrawing();
 
@@ -34,7 +33,32 @@ int main(void)
     CloseWindow();
 }
 
-int GetMouseButtonPressed()
+void printKeyboardEvent(void)
+{
+    int key = GetKeyPressed();
+    if (key) printf("Key pressed: %d\n", key);
+}
+
+void printMouseEvent(void)
+{
+    int mouseClick = GetMouseButtonPressed();
+    Vector2 mousePos = GetMousePosition();
+    double mouseWheel = GetMouseWheelMove();
+
+    if (mouseClick)
+    {
+        printf("Mouse button pressed: %d\n", mouseClick);
+        printf("Current Mouse Position: x: %.2f, y: %.2f\n", mousePos.x, mousePos.y);
+    }
+
+    if (mouseWheel)
+    {
+        printf("Mouse wheel direction: %.2f\n", mouseWheel);
+        printf("Current Mouse Position: x: %.2f, y: %.2f\n", mousePos.x, mousePos.y);
+    }
+}
+
+int GetMouseButtonPressed(void)
 {
     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) return 1;
     else if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) return 2;
