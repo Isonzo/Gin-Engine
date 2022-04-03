@@ -3,6 +3,6 @@
 
 void printKeyboardEvent(void);
 void printMouseEvent(void);
-int GetMouseButtonPressed(void);
+bool printAndDetectClick(void);
 
 #endif

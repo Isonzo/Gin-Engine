@@ -24,13 +24,12 @@ void printKeyboardEvent(void)
 
 void printMouseEvent(void)
 {
-    int mouseClick = GetMouseButtonPressed();
+    bool mouseClicked = printAndDetectClick();
     Vector2 mousePos = GetMousePosition();
     double mouseWheel = GetMouseWheelMove();
 
-    if (mouseClick)
+    if (mouseClicked)
     {
-        printf("Mouse button pressed: %d\n", mouseClick);
         printf("Current Mouse Position: x: %.2f, y: %.2f\n", mousePos.x, mousePos.y);
     }
 
@@ -41,7 +40,7 @@ void printMouseEvent(void)
     }
 }
 
-int GetMouseButtonPressed(void)
+bool printAndDetectClick(void)
 {
     /*
     Basically, these numbers give a different sum for each combination of buttons.
@@ -51,11 +50,17 @@ int GetMouseButtonPressed(void)
 
     Pretty neat and elegant, right?
     */
+    bool clicked = false;
 
-    int combo = 0;
-    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) combo += 1;
-    if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) combo += 2;
-    if (IsMouseButtonPressed(MOUSE_BUTTON_MIDDLE)) combo += 4;
+    for (int i = 0; i < 7; ++i)
+    {
+        if (IsMouseButtonPressed(i)) 
+        {
+            clicked = true;
+            printf("%d ", i);
+        }
+    }
 
-    return combo;
+    return clicked;
+
 }
