@@ -1,8 +1,8 @@
 #include "raylib.h"
 #include <stdio.h>
 
-int screenWidth = 400;
-int screenHeight = 400;
+#define SCREENWIDTH 400
+#define SCREENHEIGHT 400
 
 void printKeyboardEvent(void);
 void printMouseEvent(void);
@@ -10,7 +10,7 @@ int GetMouseButtonPressed(void);
 
 int main(void)
 {
-    InitWindow(screenWidth, screenHeight, "Game Window");
+    InitWindow(SCREENWIDTH, SCREENHEIGHT, "Game Window");
     SetTargetFPS(60);
 
     // Load Texture
@@ -24,7 +24,7 @@ int main(void)
         // Begin Drawing items on screen
         BeginDrawing();
 
-        DrawTexture(cutieAmongUs, screenWidth/2, screenHeight/2, WHITE);
+        DrawTexture(cutieAmongUs, SCREENWIDTH/2, SCREENHEIGHT/2, WHITE);
 
         EndDrawing();
     }
