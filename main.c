@@ -60,8 +60,19 @@ void printMouseEvent(void)
 
 int GetMouseButtonPressed(void)
 {
-    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) return 1;
-    else if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) return 2;
-    else if (IsMouseButtonPressed(MOUSE_BUTTON_MIDDLE)) return 3;
-    else return 0;
+    /*
+    Basically, these numbers give a different sum for each combination of buttons.
+    By looking at the resulting sum, we can determine which combination of buttons have been pressed!
+    For example, a return value of 3 means that both the left and right mouse buttons have
+    been pressed.
+
+    Pretty neat and elegant, right?
+    */
+
+    int combo = 0;
+    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) combo += 1;
+    if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) combo += 2;
+    if (IsMouseButtonPressed(MOUSE_BUTTON_MIDDLE)) combo += 4;
+
+    return combo;
 }
